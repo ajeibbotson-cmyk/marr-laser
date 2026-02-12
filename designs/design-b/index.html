@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MARR Laser & Skin Clinic — Advanced laser technology and expert skin treatments, tailored to you.">
+  <title>MARR Laser &amp; Skin Clinic — Advanced Skin Treatments</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION
+       Pattern: nav > container cc-nav > row > cols
+       Editorial Bold: off-white bg, taupe underline hover
+       ═══════════════════════════════════════════════ -->
+
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container cc-nav">
+      <div class="row row-align-center row-justify-between">
+
+        <!-- Logo -->
+        <div class="col col-shrink">
+          <a href="/" class="nav-logo" aria-label="MARR Laser &amp; Skin — Home">
+            <span class="nav-logo__main">MARR</span>
+            <span class="nav-logo__sub">Laser &amp; Skin</span>
+          </a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="col col-shrink u-sm-d-none">
+          <div class="nav-menu">
+            <a href="#treatments" class="nav-link">Treatments</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#results" class="nav-link">Results</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="col col-shrink u-sm-d-none">
+          <a href="#book" class="btn cc-primary" aria-label="Book a consultation">Book Consultation</a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <div class="col col-shrink u-d-none u-sm-d-block">
+          <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-main">
+
+    <!-- ═══════════════════════════════════════════════
+         HERO — ASYMMETRIC SPLIT
+         Pattern: section > container > row > col-lg-7 (text) + col-lg-5 (image)
+         Editorial Bold: oversized h1, asymmetric layout, tall portrait image
+         ═══════════════════════════════════════════════ -->
+
+    <section class="section cc-hero" aria-label="Hero">
+      <div class="container">
+        <div class="row row-align-center">
+
+          <!-- Text Column — Wider, oversized typography -->
+          <div class="col col-lg-7 col-md-12 col-sm-12">
+            <div class="hero-content">
+              <span class="eyebrow">Advanced Skin Care</span>
+              <h1 class="hero-heading">Beautiful Skin Starts Here</h1>
+              <p class="paragraph-lg">
+                Combining advanced laser technology with expert skin treatments,
+                MARR Laser &amp; Skin Clinic delivers personalised results you can
+                see and feel.
+              </p>
+              <div class="hero-actions">
+                <div class="row row-gap-sm">
+                  <div class="col col-shrink">
+                    <a href="#book" class="btn cc-primary" aria-label="Book a consultation">Book Consultation</a>
+                  </div>
+                  <div class="col col-shrink">
+                    <a href="#treatments" class="btn cc-outline" aria-label="View our treatments">View Treatments</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Image Column — Tall portrait -->
+          <div class="col col-lg-5 col-md-12 col-sm-12">
+            <div class="hero-image-wrap">
+              <img
+                src="https://placehold.co/600x900/C6BCB3/3C3C3B?text=MARR+Portrait"
+                alt="MARR Laser and Skin Clinic — client receiving treatment"
+                class="hero-image"
+              >
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         SERVICES — 2-Column Cards with Image Overlay
+         Pattern: section > container > centered heading row + card rows
+         Editorial Bold: charcoal bg, image overlay cards, sharp corners
+         ═══════════════════════════════════════════════ -->
+
+    <section id="treatments" class="section cc-services" aria-label="Our treatments">
+      <div class="container">
+
+        <!-- Section Heading -->
+        <div class="row row-justify-center">
+          <div class="col col-lg-8 col-md-12 col-sm-12">
+            <div class="services-heading">
+              <span class="eyebrow cc-taupe">What We Offer</span>
+              <h2 class="h2 cc-light">Our Treatments</h2>
+              <p class="paragraph-lg cc-light-muted">
+                From advanced laser therapy to rejuvenating facials, our comprehensive
+                range of treatments is designed to address your unique skin concerns.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 1: 2 cards -->
+        <div class="row">
+
+          <!-- Laser Treatments -->
+          <div class="col col-lg-6 col-md-6 col-sm-12">
+            <div class="service-card">
+              <img
+                src="https://placehold.co/700x500/ECE5E0/3C3C3B?text=Laser+Treatments"
+                alt="Laser skin treatments at MARR Clinic"
+                class="service-card__image"
+              >
+              <div class="service-card__gradient" aria-hidden="true"></div>
+              <div class="service-card__content">
+                <h3 class="h3 cc-light">Laser Treatments</h3>
+                <p class="paragraph-sm cc-light-muted">
+                  Hair removal, skin resurfacing, pigmentation correction, and
+                  vascular treatments using medical-grade laser technology.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Facials & Peels -->
+          <div class="col col-lg-6 col-md-6 col-sm-12">
+            <div class="service-card">
+              <img
+                src="https://placehold.co/700x500/C6BCB3/FFFFFF?text=Facials+%26+Peels"
+                alt="Facial treatments and chemical peels"
+                class="service-card__image"
+              >
+              <div class="service-card__gradient" aria-hidden="true"></div>
+              <div class="service-card__content">
+                <h3 class="h3 cc-light">Facials &amp; Peels</h3>
+                <p class="paragraph-sm cc-light-muted">
+                  Medical-grade facials, chemical peels, and microdermabrasion
+                  to reveal smoother, more radiant skin.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Row 2: 1 card centred -->
+        <div class="row row-justify-center">
+
+          <!-- Injectables -->
+          <div class="col col-lg-6 col-md-6 col-sm-12">
+            <div class="service-card">
+              <img
+                src="https://placehold.co/700x500/3C3C3B/F9F9F8?text=Injectables"
+                alt="Injectable treatments — anti-wrinkle and fillers"
+                class="service-card__image"
+              >
+              <div class="service-card__gradient" aria-hidden="true"></div>
+              <div class="service-card__content">
+                <h3 class="h3 cc-light">Injectables</h3>
+                <p class="paragraph-sm cc-light-muted">
+                  Anti-wrinkle treatments and dermal fillers administered by
+                  qualified practitioners for natural-looking results.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ABOUT — Full-Width Image Band with Overlay Panel
+         Pattern: section (position relative) > bg image + overlay panel
+         Editorial Bold: full-width bg image, charcoal semi-transparent panel right
+         ═══════════════════════════════════════════════ -->
+
+    <section id="about" class="section cc-about" aria-label="About MARR">
+      <div class="about-bg">
+        <img
+          src="https://placehold.co/1600x800/ECE5E0/C6BCB3?text=Clinic+Interior"
+          alt="MARR Laser and Skin Clinic interior"
+          class="about-bg__image"
+        >
+      </div>
+
+      <div class="container">
+        <div class="row row-justify-end">
+
+          <!-- Overlay Panel -->
+          <div class="col col-lg-6 col-md-8 col-sm-12">
+            <div class="about-panel">
+              <span class="eyebrow cc-taupe">About MARR</span>
+              <h2 class="h2 cc-light">Your Skin, Our Expertise</h2>
+              <p class="about-panel__text">
+                Founded with a passion for skin health, MARR Laser &amp; Skin Clinic
+                brings together a team of qualified dermal therapists and laser
+                technicians dedicated to delivering exceptional results.
+              </p>
+              <p class="about-panel__text">
+                Our clinic combines the latest in medical-grade technology with
+                a warm, welcoming environment where every client feels valued.
+              </p>
+
+              <!-- Stats Row -->
+              <div class="about-stats">
+                <div class="about-stat">
+                  <span class="about-stat__number">10+</span>
+                  <span class="about-stat__label">Years Experience</span>
+                </div>
+                <div class="about-stat">
+                  <span class="about-stat__number">5,000+</span>
+                  <span class="about-stat__label">Happy Clients</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         TESTIMONIALS — 3-Column Editorial
+         Pattern: section > container > centered heading + row of 3 cols
+         Editorial Bold: decorative quote marks, vertical taupe dividers
+         ═══════════════════════════════════════════════ -->
+
+    <section id="results" class="section cc-testimonials" aria-label="Client testimonials">
+      <div class="container">
+
+        <!-- Section Heading -->
+        <div class="row row-justify-center">
+          <div class="col col-lg-8 col-md-12 col-sm-12">
+            <div class="testimonials-heading">
+              <span class="eyebrow">Client Stories</span>
+              <h2 class="h2">What Our Clients Say</h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonials Row -->
+        <div class="row">
+
+          <!-- Testimonial 1 -->
+          <div class="col col-lg-4 col-md-12 col-sm-12">
+            <div class="testimonial-card cc-divider-right">
+              <blockquote class="testimonial-card__quote">
+                <p class="testimonial-card__text">
+                  The team at MARR made me feel completely at ease from my very
+                  first consultation. My skin has never looked better — I wish
+                  I'd come sooner.
+                </p>
+              </blockquote>
+              <div class="testimonial-author">
+                <p class="testimonial-author__name">Sarah M.</p>
+                <p class="testimonial-author__detail">Laser Skin Resurfacing</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="col col-lg-4 col-md-12 col-sm-12">
+            <div class="testimonial-card cc-divider-right">
+              <blockquote class="testimonial-card__quote">
+                <p class="testimonial-card__text">
+                  Professional, knowledgeable, and genuinely caring. The results
+                  from my treatment plan exceeded all my expectations. Highly
+                  recommend to anyone.
+                </p>
+              </blockquote>
+              <div class="testimonial-author">
+                <p class="testimonial-author__name">Emma L.</p>
+                <p class="testimonial-author__detail">Anti-Wrinkle &amp; Dermal Fillers</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="col col-lg-4 col-md-12 col-sm-12">
+            <div class="testimonial-card">
+              <blockquote class="testimonial-card__quote">
+                <p class="testimonial-card__text">
+                  After years of struggling with pigmentation, MARR finally
+                  gave me a solution that actually works. The clinic is
+                  beautiful and the staff are wonderful.
+                </p>
+              </blockquote>
+              <div class="testimonial-author">
+                <p class="testimonial-author__name">Jessica K.</p>
+                <p class="testimonial-author__detail">Pigmentation Treatment</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CTA — Charcoal Full-Width Band
+         Pattern: section > container > row row-justify-center > centered col
+         Editorial Bold: charcoal bg, light text, high contrast
+         ═══════════════════════════════════════════════ -->
+
+    <section id="book" class="section cc-cta" aria-label="Book a consultation">
+      <div class="container">
+        <div class="row row-justify-center">
+          <div class="col col-lg-8 col-md-10 col-sm-12">
+            <div class="cta-content">
+              <span class="eyebrow cc-taupe">Start Your Journey</span>
+              <h2 class="h2 cc-light">Book Your Consultation</h2>
+              <p class="paragraph-lg cc-light-muted">
+                Every great result begins with a conversation. Book a complimentary
+                consultation and let our team create a personalised treatment plan
+                designed around your skin goals.
+              </p>
+              <div class="cta-actions">
+                <div class="row row-justify-center row-gap-sm">
+                  <div class="col col-shrink">
+                    <a href="#book" class="btn cc-light" aria-label="Book a consultation now">Book Now</a>
+                  </div>
+                  <div class="col col-shrink">
+                    <a href="tel:+61000000000" class="btn cc-outline-light" aria-label="Call the clinic">Call Us</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER — 4 Column Standard
+       Pattern: section cc-footer > container > row with 4 cols
+       Editorial Bold: charcoal bg, light text
+       ═══════════════════════════════════════════════ -->
+
+  <footer id="contact" class="section cc-footer" aria-label="Site footer">
+    <div class="container">
+      <div class="row">
+
+        <!-- Brand Column -->
+        <div class="col col-lg-3 col-md-6 col-sm-12">
+          <div class="footer-brand">
+            <span class="footer-brand__main">MARR</span>
+            <span class="footer-brand__sub">Laser &amp; Skin</span>
+          </div>
+          <p class="paragraph-sm cc-footer-muted">
+            Advanced laser technology and expert skin treatments,
+            tailored to you.
+          </p>
+        </div>
+
+        <!-- Treatments Column -->
+        <div class="col col-lg-3 col-md-6 col-sm-12">
+          <h4 class="footer-heading">Treatments</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Laser</a></li>
+            <li><a href="#" class="footer-link">Facials</a></li>
+            <li><a href="#" class="footer-link">Injectables</a></li>
+            <li><a href="#" class="footer-link">Body</a></li>
+            <li><a href="#" class="footer-link">Consultations</a></li>
+          </ul>
+        </div>
+
+        <!-- Clinic Column -->
+        <div class="col col-lg-3 col-md-6 col-sm-12">
+          <h4 class="footer-heading">Clinic</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About Us</a></li>
+            <li><a href="#" class="footer-link">Our Team</a></li>
+            <li><a href="#" class="footer-link">Before &amp; After</a></li>
+            <li><a href="#" class="footer-link">Blog</a></li>
+            <li><a href="#" class="footer-link">Privacy</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Column -->
+        <div class="col col-lg-3 col-md-6 col-sm-12">
+          <h4 class="footer-heading">Contact</h4>
+          <ul class="footer-links">
+            <li class="footer-contact">123 Clinic Street</li>
+            <li class="footer-contact">Melbourne VIC 3000</li>
+            <li><a href="tel:+61000000000" class="footer-link">03 0000 0000</a></li>
+            <li><a href="mailto:hello@marrclinic.com.au" class="footer-link">hello@marrclinic.com.au</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="row row-align-center row-justify-between">
+          <div class="col col-shrink">
+            <p class="paragraph-sm cc-footer-dim">&copy; 2026 MARR Laser &amp; Skin Clinic. All rights reserved.</p>
+          </div>
+          <div class="col col-shrink">
+            <div class="footer-social">
+              <a href="#" class="footer-social__link" aria-label="Follow MARR on Instagram">Instagram</a>
+              <a href="#" class="footer-social__link" aria-label="Follow MARR on Facebook">Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

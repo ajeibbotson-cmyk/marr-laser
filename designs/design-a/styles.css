@@ -1,0 +1,1063 @@
+/* ═══════════════════════════════════════════════════════════════
+   MARR Laser & Skin Clinic — Design A: "Serene Spa"
+   Framework: Mast CSS (Webflow)
+   Mood: Calm clinical authority, airy, photography-led
+   Inspired by: Dr Taktouk + Sarah Chapman
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ═══════════════════════════════════════════════════════════════
+   1. CSS CUSTOM PROPERTIES
+   MARR brand tokens + Design A specific overrides
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* --- MARR Brand Colours --- */
+  --marr-charcoal: #3C3C3B;
+  --marr-taupe: #C6BCB3;
+  --marr-blush: #ECE5E0;
+  --marr-offwhite: #F9F9F8;
+
+  /* --- Functional Colour Aliases --- */
+  --marr-text: #3C3C3B;
+  --marr-text-muted: #7a7574;
+  --marr-border: rgba(60, 60, 59, 0.1);
+  --marr-border-strong: rgba(60, 60, 59, 0.2);
+
+  /* --- Mast-Compatible Colour Mappings --- */
+  --color-primary: var(--marr-charcoal);
+  --color-secondary: var(--marr-taupe);
+  --color-bg: var(--marr-offwhite);
+  --color-bg-alt: var(--marr-blush);
+  --color-text: var(--marr-text);
+  --color-text-muted: var(--marr-text-muted);
+
+  /* --- Hover / Derived States --- */
+  --marr-charcoal-hover: #2a2a29;
+  --marr-taupe-hover: #b5aa9f;
+
+  /* --- Typography --- */
+  --marr-font-heading: 'Cangste', 'Cormorant Garamond', serif;
+  --marr-font-body: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  --marr-tracking-heading: 0.1em;
+  --marr-tracking-body: 0.05em;
+  --marr-weight-body: 300;
+
+  /* --- Spacing Scale --- */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-80: 80px;
+
+  /* --- Design A: Expanded Spacing --- */
+  --sp-96: 96px;
+  --sp-120: 120px;
+
+  /* --- Radius --- */
+  --r-none: 0px;
+  --r-sm: 2px;
+  --r-md: 4px;
+  --r-lg: 8px;
+
+  /* --- Transitions --- */
+  --transition-base: 0.25s ease;
+
+  /* --- Design A: Hero --- */
+  --hero-overlay-color: rgba(60, 60, 59, 0.55);
+  --hero-min-height: 85vh;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   2. BASE
+   Resets, page structure, grid
+   ═══════════════════════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--marr-font-body);
+  font-weight: var(--marr-weight-body);
+  letter-spacing: var(--marr-tracking-body);
+  background-color: var(--marr-offwhite);
+  color: var(--marr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page wrapper */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content area */
+.page-main {
+  flex: 1;
+}
+
+/* Sections — Design A uses larger vertical rhythm for spaciousness */
+.section {
+  padding-top: var(--sp-120);
+  padding-bottom: var(--sp-120);
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--sp-24);
+  padding-right: var(--sp-24);
+}
+
+/* Nav container variant */
+.container.cc-nav {
+  padding-top: var(--sp-20);
+  padding-bottom: var(--sp-20);
+}
+
+/* Row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--sp-16) * -1);
+  margin-right: calc(var(--sp-16) * -1);
+}
+
+.row-align-center {
+  align-items: center;
+}
+
+.row-justify-center {
+  justify-content: center;
+}
+
+.row-justify-between {
+  justify-content: space-between;
+}
+
+.row-gap-sm {
+  gap: var(--sp-12);
+}
+
+/* Columns */
+.col {
+  padding-left: var(--sp-16);
+  padding-right: var(--sp-16);
+  width: 100%;
+}
+
+.col-shrink {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+/* Desktop columns (992px+) */
+.col-lg-3  { width: 25%; }
+.col-lg-4  { width: 33.333333%; }
+.col-lg-6  { width: 50%; }
+.col-lg-8  { width: 66.666667%; }
+.col-lg-10 { width: 83.333333%; }
+.col-lg-12 { width: 100%; }
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Image reset */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   3. TYPOGRAPHY
+   Heading and body styles using MARR fonts
+   ═══════════════════════════════════════════════════════════════ */
+
+/* All headings */
+.h1, .h2, .h3, .h4,
+h1, h2, h3, h4 {
+  font-family: var(--marr-font-heading);
+  font-weight: 300;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--marr-text);
+}
+
+.h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+.h2 { font-size: clamp(1.5rem, 3.5vw, 2.375rem); }
+.h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+.h4 { font-size: 1.125rem; }
+
+/* Body text sizes */
+.paragraph-xl {
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+.paragraph-lg {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--marr-text-muted);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.paragraph-sm {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--marr-text-muted);
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: block;
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+}
+
+/* Italic variant */
+.cc-italic {
+  font-style: italic;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   4. NAVIGATION — Design A: Centred Logo
+   Logo in centre, links split left and right
+   ═══════════════════════════════════════════════════════════════ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--marr-offwhite);
+  border-bottom: 1px solid var(--marr-border);
+}
+
+/* Nav logo — stacked wordmark */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  line-height: 1;
+  padding-left: var(--sp-32);
+  padding-right: var(--sp-32);
+}
+
+.nav-logo__main {
+  font-family: var(--marr-font-heading);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-charcoal);
+}
+
+.nav-logo__sub {
+  font-family: var(--marr-font-heading);
+  font-size: 0.5625rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+}
+
+/* Nav menu — horizontal link list */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-32);
+}
+
+/* Nav links */
+.nav-link {
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: var(--marr-text);
+  transition: color var(--transition-base);
+}
+
+.nav-link:hover {
+  color: var(--marr-taupe);
+}
+
+/* Mobile hamburger toggle */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--marr-charcoal);
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   5. BUTTONS
+   btn base + cc-primary, cc-outline, cc-secondary, cc-ghost,
+   cc-light, cc-outline-light variants
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+/* Primary — charcoal background, off-white text */
+.btn.cc-primary {
+  background-color: var(--marr-charcoal);
+  color: var(--marr-offwhite);
+  border-color: var(--marr-charcoal);
+}
+
+.btn.cc-primary:hover {
+  background-color: var(--marr-charcoal-hover);
+  border-color: var(--marr-charcoal-hover);
+}
+
+/* Outline — transparent bg, charcoal border and text */
+.btn.cc-outline {
+  background-color: transparent;
+  color: var(--marr-charcoal);
+  border-color: var(--marr-charcoal);
+}
+
+.btn.cc-outline:hover {
+  background-color: var(--marr-charcoal);
+  color: var(--marr-offwhite);
+}
+
+/* Secondary — taupe background, white text */
+.btn.cc-secondary {
+  background-color: var(--marr-taupe);
+  color: #ffffff;
+  border-color: var(--marr-taupe);
+}
+
+.btn.cc-secondary:hover {
+  background-color: var(--marr-taupe-hover);
+  border-color: var(--marr-taupe-hover);
+}
+
+/* Ghost — transparent, muted text */
+.btn.cc-ghost {
+  background-color: transparent;
+  color: var(--marr-text-muted);
+  border-color: transparent;
+}
+
+.btn.cc-ghost:hover {
+  color: var(--marr-charcoal);
+}
+
+/* Light — off-white bg, charcoal text (for dark backgrounds) */
+.btn.cc-light {
+  background-color: var(--marr-offwhite);
+  color: var(--marr-charcoal);
+  border-color: var(--marr-offwhite);
+}
+
+.btn.cc-light:hover {
+  background-color: var(--marr-blush);
+  border-color: var(--marr-blush);
+}
+
+/* Outline Light — for dark backgrounds (Design A hero) */
+.btn.cc-outline-light {
+  background-color: transparent;
+  color: var(--marr-offwhite);
+  border-color: rgba(249, 249, 248, 0.5);
+}
+
+.btn.cc-outline-light:hover {
+  background-color: rgba(249, 249, 248, 0.1);
+  border-color: var(--marr-offwhite);
+  color: var(--marr-offwhite);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   6. COMPONENTS
+   Cards, section headers, testimonials, about stats
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- Section Header (centred text block) --- */
+.section-header {
+  text-align: center;
+}
+
+.section-header .eyebrow {
+  margin-bottom: var(--sp-12);
+}
+
+.section-header .h2 {
+  margin-bottom: var(--sp-24);
+}
+
+.section-header .paragraph-lg {
+  margin-bottom: var(--sp-48);
+}
+
+/* --- Service Cards — Design A: Flat, Minimal --- */
+.card.cc-service-flat {
+  background-color: #ffffff;
+  border: 1px solid var(--marr-border);
+  border-bottom: 3px solid var(--marr-taupe);
+  border-radius: var(--r-none);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow var(--transition-base);
+}
+
+.card.cc-service-flat:hover {
+  box-shadow: 0 4px 24px rgba(60, 60, 59, 0.08);
+}
+
+.card-image-wrap {
+  overflow: hidden;
+}
+
+.card.cc-service-flat img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.card.cc-service-flat .card-body {
+  padding: var(--sp-32);
+  flex: 1;
+}
+
+.card.cc-service-flat .card-body .h3 {
+  margin-bottom: var(--sp-12);
+}
+
+/* --- About Stats — Design A: Taupe Left-Border --- */
+.about-stat.cc-border-left {
+  text-align: left;
+  padding: var(--sp-20) var(--sp-24);
+  border-left: 3px solid var(--marr-taupe);
+}
+
+.about-stat.cc-border-left .h3 {
+  color: var(--marr-charcoal);
+  margin-bottom: var(--sp-4);
+}
+
+.about-stat.cc-border-left .paragraph-sm {
+  color: var(--marr-text-muted);
+}
+
+/* --- About Content Wrappers --- */
+.about-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.about-text-wrap .eyebrow {
+  margin-bottom: var(--sp-12);
+}
+
+.about-text-wrap .h2 {
+  margin-bottom: var(--sp-24);
+}
+
+.about-text-wrap p {
+  margin-bottom: var(--sp-20);
+}
+
+.about-text-wrap .row {
+  margin-top: var(--sp-32);
+}
+
+/* --- Testimonial Pull-Quote — Design A --- */
+.testimonial-pullquote {
+  text-align: center;
+  position: relative;
+  padding-top: var(--sp-64);
+}
+
+/* Decorative large quotation mark */
+.testimonial-pullquote::before {
+  content: '\201C';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--marr-font-heading);
+  font-size: 8rem;
+  line-height: 1;
+  color: var(--marr-taupe);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.pullquote-body {
+  margin-bottom: var(--sp-32);
+}
+
+.pullquote-body .paragraph-xl {
+  color: var(--marr-text);
+  line-height: 1.8;
+}
+
+/* Testimonial author (reused from parent) */
+.pullquote-author {
+  margin-bottom: var(--sp-32);
+}
+
+.testimonial-author__name {
+  font-family: var(--marr-font-heading);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: var(--marr-charcoal);
+  margin-bottom: var(--sp-4);
+}
+
+.testimonial-author__detail {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--marr-taupe);
+  font-style: normal;
+}
+
+/* Pagination dots (decorative) */
+.pullquote-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-12);
+}
+
+.pullquote-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid var(--marr-taupe);
+  background-color: transparent;
+  transition: background-color var(--transition-base);
+}
+
+.pullquote-dot.cc-active {
+  background-color: var(--marr-taupe);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   7. SECTION-SPECIFIC
+   cc-hero, cc-services, cc-about, cc-testimonials, cc-cta, cc-footer
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- Hero — Design A: Full-Width Background Image --- */
+.section.cc-hero {
+  position: relative;
+  min-height: var(--hero-min-height);
+  display: flex;
+  align-items: center;
+  padding-top: var(--sp-80);
+  padding-bottom: var(--sp-80);
+  background-image: url('https://placehold.co/1920x1080/3C3C3B/F9F9F8?text=Hero+Background');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--hero-overlay-color);
+  z-index: 1;
+}
+
+.section.cc-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.cc-hero-eyebrow {
+  color: var(--marr-taupe);
+  margin-bottom: var(--sp-16);
+}
+
+.cc-hero-heading {
+  color: var(--marr-offwhite);
+  margin-bottom: var(--sp-24);
+}
+
+.cc-hero-text {
+  color: rgba(249, 249, 248, 0.8);
+  margin-bottom: var(--sp-48);
+}
+
+/* --- Services Section --- */
+.section.cc-services {
+  background-color: var(--marr-offwhite);
+}
+
+/* --- About Section — blush background --- */
+.section.cc-about {
+  background-color: var(--marr-blush);
+}
+
+/* --- Testimonials Section — Design A: Off-white, pull-quote --- */
+.section.cc-testimonials {
+  background-color: var(--marr-offwhite);
+}
+
+/* --- CTA Section — blush background --- */
+.section.cc-cta {
+  background-color: var(--marr-blush);
+}
+
+/* --- Footer Section --- */
+.section.cc-footer {
+  background-color: var(--marr-charcoal);
+  color: var(--marr-offwhite);
+  padding-bottom: var(--sp-32);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   8. FOOTER
+   footer-brand, footer-heading, footer-links, footer-link,
+   footer-contact, footer-bottom, footer-social
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Footer brand wordmark */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--sp-16);
+  line-height: 1;
+}
+
+.footer-brand__main {
+  font-family: var(--marr-font-heading);
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-offwhite);
+}
+
+.footer-brand__sub {
+  font-family: var(--marr-font-heading);
+  font-size: 0.5625rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+}
+
+/* Footer column headings */
+.footer-heading {
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+  margin-bottom: var(--sp-20);
+}
+
+/* Footer link list */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--sp-12);
+}
+
+/* Footer link */
+.footer-link {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(249, 249, 248, 0.7);
+  transition: color var(--transition-base);
+}
+
+.footer-link:hover {
+  color: var(--marr-offwhite);
+}
+
+/* Footer contact (non-linked text) */
+.footer-contact {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(249, 249, 248, 0.7);
+}
+
+/* Footer paragraph — muted variant */
+.cc-footer-muted {
+  color: rgba(249, 249, 248, 0.5);
+}
+
+/* Footer bottom bar */
+.footer-bottom {
+  margin-top: var(--sp-48);
+  padding-top: var(--sp-24);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cc-footer-fine {
+  font-size: 0.75rem;
+  color: rgba(249, 249, 248, 0.4);
+}
+
+/* Footer social links */
+.footer-social {
+  display: flex;
+  gap: var(--sp-20);
+}
+
+.footer-social__link {
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: rgba(249, 249, 248, 0.5);
+  transition: color var(--transition-base);
+}
+
+.footer-social__link:hover {
+  color: var(--marr-offwhite);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   9. UTILITIES
+   Display, spacing, text alignment utilities
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Text alignment */
+.u-text-center { text-align: center; }
+.u-text-left   { text-align: left; }
+.u-text-right  { text-align: right; }
+
+/* Spacing utilities — margin */
+.u-mb-sm  { margin-bottom: var(--sp-12); }
+.u-mb-md  { margin-bottom: var(--sp-24); }
+.u-mb-lg  { margin-bottom: var(--sp-48); }
+.u-mt-sm  { margin-top: var(--sp-12); }
+.u-mt-md  { margin-top: var(--sp-24); }
+.u-mt-lg  { margin-top: var(--sp-48); }
+.u-mt-0   { margin-top: 0; }
+.u-mb-0   { margin-bottom: 0; }
+
+/* Display utilities */
+.u-d-none     { display: none; }
+.u-d-block    { display: block; }
+.u-d-flex     { display: flex; }
+.u-sm-d-none  { /* visible by default, hidden on mobile — handled in responsive */ }
+.u-sm-d-block { display: none; /* hidden by default, shown on mobile */ }
+
+/* Position and overflow */
+.u-position-relative { position: relative; }
+.u-overflow-hidden   { overflow: hidden; }
+
+/* Image cover utility */
+.u-img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   10. RESPONSIVE
+   Tablet, mobile landscape, mobile portrait
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- Tablet: max-width 991px --- */
+@media (max-width: 991px) {
+
+  /* Tablet column overrides */
+  .col-md-6  { width: 50%; }
+  .col-md-10 { width: 83.333333%; }
+  .col-md-12 { width: 100%; }
+
+  /* Reduce section spacing */
+  .section {
+    padding-top: var(--sp-80);
+    padding-bottom: var(--sp-80);
+  }
+
+  /* Hero adjustments */
+  .section.cc-hero {
+    min-height: 70vh;
+  }
+
+  /* About section — keep side by side but allow stack */
+  .section.cc-about .col {
+    width: 100%;
+  }
+
+  .about-image-wrap {
+    margin-bottom: var(--sp-48);
+  }
+
+  /* Footer columns stack at 2 across */
+  .section.cc-footer .col {
+    margin-bottom: var(--sp-32);
+  }
+}
+
+/* --- Mobile Landscape: max-width 767px --- */
+@media (max-width: 767px) {
+
+  /* Mobile landscape column overrides */
+  .col-sm-12 { width: 100%; }
+  .col-sm-6  { width: 50%; }
+
+  /* Hide desktop nav elements */
+  .u-sm-d-none {
+    display: none;
+  }
+
+  /* Show mobile toggle */
+  .u-sm-d-block {
+    display: block;
+  }
+
+  /* Nav — left-align logo on mobile */
+  .nav .row {
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    align-items: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Reduce section spacing */
+  .section {
+    padding-top: var(--sp-64);
+    padding-bottom: var(--sp-64);
+  }
+
+  /* Container tighter padding */
+  .container {
+    padding-left: var(--sp-20);
+    padding-right: var(--sp-20);
+  }
+
+  /* Typography scaling */
+  .h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+  .h2 { font-size: clamp(1.375rem, 5vw, 1.875rem); }
+
+  /* Hero adjustments */
+  .section.cc-hero {
+    min-height: 60vh;
+  }
+
+  .cc-hero-text {
+    margin-bottom: var(--sp-32);
+  }
+
+  /* About section stacks */
+  .section.cc-about .row {
+    flex-direction: column;
+  }
+
+  .section.cc-about .col {
+    width: 100%;
+  }
+
+  .about-image-wrap {
+    margin-bottom: var(--sp-32);
+  }
+
+  /* Service cards — full width spacing */
+  .card.cc-service-flat {
+    margin-bottom: var(--sp-24);
+  }
+
+  .card.cc-service-flat img {
+    height: 200px;
+  }
+
+  /* Testimonial pull-quote — reduce decorative quote size */
+  .testimonial-pullquote::before {
+    font-size: 5rem;
+  }
+
+  .testimonial-pullquote {
+    padding-top: var(--sp-48);
+  }
+
+  .pullquote-body .paragraph-xl {
+    font-size: 1.25rem;
+  }
+
+  /* Footer all columns full width */
+  .section.cc-footer .col {
+    width: 100%;
+  }
+
+  /* Footer bottom stacks */
+  .footer-bottom .row {
+    flex-direction: column;
+    gap: var(--sp-12);
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+/* --- Mobile Portrait: max-width 477px --- */
+@media (max-width: 477px) {
+
+  /* Tightest section spacing */
+  .section {
+    padding-top: var(--sp-48);
+    padding-bottom: var(--sp-48);
+  }
+
+  /* Container minimal padding */
+  .container {
+    padding-left: var(--sp-16);
+    padding-right: var(--sp-16);
+  }
+
+  /* Typography — smallest scale */
+  .h1 { font-size: 1.625rem; }
+  .h2 { font-size: 1.25rem; }
+  .h3 { font-size: 1.0625rem; }
+
+  .paragraph-lg {
+    font-size: 1rem;
+  }
+
+  /* Hero — reduce min-height */
+  .section.cc-hero {
+    min-height: 50vh;
+    padding-top: var(--sp-64);
+    padding-bottom: var(--sp-64);
+  }
+
+  /* Buttons stack full width on smallest screens */
+  .section.cc-hero .row-gap-sm,
+  .section.cc-cta .row-gap-sm {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .section.cc-hero .row-gap-sm .col-shrink,
+  .section.cc-cta .row-gap-sm .col-shrink {
+    width: 100%;
+  }
+
+  .section.cc-hero .btn,
+  .section.cc-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* About stats side-by-side tighter */
+  .about-stat.cc-border-left {
+    padding: var(--sp-16) var(--sp-16);
+  }
+
+  /* Service card image shorter */
+  .card.cc-service-flat img {
+    height: 160px;
+  }
+
+  /* Testimonial pull-quote — smaller */
+  .testimonial-pullquote::before {
+    font-size: 4rem;
+  }
+
+  .pullquote-body .paragraph-xl {
+    font-size: 1.125rem;
+  }
+
+  /* Nav logo smaller */
+  .nav-logo__main {
+    font-size: 1.25rem;
+  }
+
+  .nav-logo__sub {
+    font-size: 0.5rem;
+  }
+}

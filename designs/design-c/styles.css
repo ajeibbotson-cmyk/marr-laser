@@ -1,0 +1,1143 @@
+/* ═══════════════════════════════════════════════════════════════
+   MARR Laser & Skin Clinic — Design C: Warm Boutique
+   Framework: Mast CSS (Webflow)
+   Mood: Welcoming, personal, warm tones prominent, boutique clinic
+   Key traits: Rounded corners (8px), prominent taupe, blush/taupe
+   colour blocking, soft shadows, warm and inviting
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* === CUSTOM PROPERTIES === */
+
+:root {
+  /* --- MARR Brand Colours --- */
+  --marr-charcoal: #3C3C3B;
+  --marr-taupe: #C6BCB3;
+  --marr-blush: #ECE5E0;
+  --marr-offwhite: #F9F9F8;
+
+  /* --- Functional Colour Aliases --- */
+  --marr-text: #3C3C3B;
+  --marr-text-muted: #7a7574;
+  --marr-border: rgba(60, 60, 59, 0.1);
+  --marr-border-strong: rgba(60, 60, 59, 0.2);
+
+  /* --- Mast-Compatible Colour Mappings --- */
+  --color-primary: var(--marr-charcoal);
+  --color-secondary: var(--marr-taupe);
+  --color-bg: var(--marr-offwhite);
+  --color-bg-alt: var(--marr-blush);
+  --color-text: var(--marr-text);
+  --color-text-muted: var(--marr-text-muted);
+
+  /* --- Hover / Derived States --- */
+  --marr-charcoal-hover: #2a2a29;
+  --marr-taupe-hover: #b5aa9f;
+
+  /* --- Typography --- */
+  --marr-font-heading: 'Cangste', 'Cormorant Garamond', serif;
+  --marr-font-body: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
+  --marr-tracking-heading: 0.1em;
+  --marr-tracking-body: 0.05em;
+  --marr-weight-body: 300;
+
+  /* --- Spacing Scale --- */
+  --sp-4: 4px;
+  --sp-8: 8px;
+  --sp-12: 12px;
+  --sp-16: 16px;
+  --sp-20: 20px;
+  --sp-24: 24px;
+  --sp-32: 32px;
+  --sp-48: 48px;
+  --sp-64: 64px;
+  --sp-80: 80px;
+
+  /* --- Radius --- */
+  --r-none: 0px;
+  --r-sm: 2px;
+  --r-md: 4px;
+  --r-lg: 8px;
+
+  /* --- Design C Specific: Shadows --- */
+  --shadow-card: 0 2px 12px rgba(60, 60, 59, 0.06);
+  --shadow-card-hover: 0 4px 20px rgba(60, 60, 59, 0.1);
+  --shadow-testimonial: 0 4px 24px rgba(60, 60, 59, 0.08);
+
+  /* --- Transitions --- */
+  --transition-base: 0.25s ease;
+}
+
+
+/* === BASE === */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--marr-font-body);
+  font-weight: var(--marr-weight-body);
+  letter-spacing: var(--marr-tracking-body);
+  background-color: var(--marr-offwhite);
+  color: var(--marr-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Page wrapper */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main content area */
+.page-main {
+  flex: 1;
+}
+
+/* Sections — vertical rhythm */
+.section {
+  padding-top: var(--sp-80);
+  padding-bottom: var(--sp-80);
+}
+
+/* Container — centred max-width */
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--sp-24);
+  padding-right: var(--sp-24);
+}
+
+/* Nav container variant */
+.container.cc-nav {
+  padding-top: var(--sp-16);
+  padding-bottom: var(--sp-16);
+}
+
+/* Row — flex layout for columns */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(var(--sp-16) * -1);
+  margin-right: calc(var(--sp-16) * -1);
+}
+
+.row-align-center {
+  align-items: center;
+}
+
+.row-justify-center {
+  justify-content: center;
+}
+
+.row-justify-between {
+  justify-content: space-between;
+}
+
+.row-gap-sm {
+  gap: var(--sp-12);
+}
+
+/* Columns — 12-column grid */
+.col {
+  padding-left: var(--sp-16);
+  padding-right: var(--sp-16);
+  width: 100%;
+}
+
+.col-shrink {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+/* Desktop columns (992px+) */
+.col-lg-3  { width: 25%; }
+.col-lg-4  { width: 33.333333%; }
+.col-lg-6  { width: 50%; }
+.col-lg-8  { width: 66.666667%; }
+.col-lg-10 { width: 83.333333%; }
+.col-lg-12 { width: 100%; }
+
+/* Links — base reset */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Image reset */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* === TYPOGRAPHY === */
+
+/* All headings — shared MARR heading treatment */
+.h1, .h2, .h3, .h4,
+h1, h2, h3, h4 {
+  font-family: var(--marr-font-heading);
+  font-weight: 300;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--marr-text);
+}
+
+.h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+.h2 { font-size: clamp(1.5rem, 3.5vw, 2.375rem); }
+.h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+.h4 { font-size: 1.125rem; }
+
+/* Body text sizes */
+.paragraph-xl {
+  font-size: 1.5rem;
+  line-height: 1.7;
+}
+
+.paragraph-lg {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--marr-text-muted);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.paragraph-sm {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--marr-text-muted);
+}
+
+/* Eyebrow — small uppercase label */
+.eyebrow {
+  display: block;
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+  margin-bottom: var(--sp-12);
+}
+
+/* Italic modifier */
+.cc-italic {
+  font-style: italic;
+}
+
+
+/* === NAVIGATION === */
+/* Design C: Centered logo, pill-shaped taupe hover on nav links */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--marr-offwhite);
+  border-bottom: 1px solid var(--marr-border);
+}
+
+/* Nav logo — stacked wordmark */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  line-height: 1;
+  padding-left: var(--sp-32);
+  padding-right: var(--sp-32);
+}
+
+.nav-logo__main {
+  font-family: var(--marr-font-heading);
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-charcoal);
+  text-align: center;
+}
+
+.nav-logo__sub {
+  font-family: var(--marr-font-heading);
+  font-size: 0.5625rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+  text-align: center;
+}
+
+/* Nav menu — horizontal link list */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+/* Nav links — Design C pill hover state */
+.nav-link {
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: var(--marr-text);
+  padding: var(--sp-8) var(--sp-16);
+  border-radius: 100px;
+  transition: background-color var(--transition-base),
+              color var(--transition-base);
+}
+
+.nav-link:hover,
+.nav-link:focus-visible {
+  background-color: var(--marr-taupe);
+  color: #ffffff;
+}
+
+/* Mobile hamburger toggle */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--marr-charcoal);
+  transition: transform var(--transition-base),
+              opacity var(--transition-base);
+}
+
+
+/* === BUTTONS === */
+
+/* Button base */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-12) 28px;
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--r-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-base),
+              color var(--transition-base),
+              border-color var(--transition-base);
+}
+
+/* Primary — charcoal background, off-white text */
+.btn.cc-primary {
+  background-color: var(--marr-charcoal);
+  color: var(--marr-offwhite);
+  border-color: var(--marr-charcoal);
+}
+
+.btn.cc-primary:hover {
+  background-color: var(--marr-charcoal-hover);
+  border-color: var(--marr-charcoal-hover);
+}
+
+/* Secondary — taupe background, white text (Design C primary CTA) */
+.btn.cc-secondary {
+  background-color: var(--marr-taupe);
+  color: #ffffff;
+  border-color: var(--marr-taupe);
+}
+
+.btn.cc-secondary:hover {
+  background-color: var(--marr-taupe-hover);
+  border-color: var(--marr-taupe-hover);
+}
+
+/* Outline — transparent bg, charcoal border and text */
+.btn.cc-outline {
+  background-color: transparent;
+  color: var(--marr-charcoal);
+  border-color: var(--marr-charcoal);
+}
+
+.btn.cc-outline:hover {
+  background-color: var(--marr-charcoal);
+  color: var(--marr-offwhite);
+}
+
+/* Ghost — transparent, muted text */
+.btn.cc-ghost {
+  background-color: transparent;
+  color: var(--marr-text-muted);
+  border-color: transparent;
+}
+
+.btn.cc-ghost:hover {
+  color: var(--marr-charcoal);
+}
+
+/* Light — off-white bg, charcoal text (for dark backgrounds) */
+.btn.cc-light {
+  background-color: var(--marr-offwhite);
+  color: var(--marr-charcoal);
+  border-color: var(--marr-offwhite);
+}
+
+.btn.cc-light:hover {
+  background-color: var(--marr-blush);
+  border-color: var(--marr-blush);
+}
+
+/* Focus visible state for all buttons */
+.btn:focus-visible {
+  outline: 2px solid var(--marr-taupe);
+  outline-offset: 2px;
+}
+
+
+/* === COMPONENTS === */
+
+/* Section header — centered heading block */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--sp-48);
+}
+
+.section-header .eyebrow {
+  margin-bottom: var(--sp-12);
+}
+
+.section-header .h2 {
+  margin-bottom: var(--sp-16);
+}
+
+.section-header .paragraph-lg {
+  margin-bottom: var(--sp-32);
+}
+
+/* Card base — Design C uses rounded corners */
+.card {
+  background-color: #ffffff;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+/* Card body — inner padding area */
+.card-body {
+  padding: var(--sp-24);
+}
+
+/* Design C warm card variant — rounded, soft shadow, taupe stripe */
+.card.cc-warm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: none;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-base),
+              transform var(--transition-base);
+}
+
+.card.cc-warm:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+/* Taupe stripe at top of warm card */
+.card-stripe {
+  height: var(--sp-4);
+  background-color: var(--marr-taupe);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+}
+
+/* Card image wrapper */
+.card-image-wrap {
+  overflow: hidden;
+}
+
+.card-image-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body within warm cards */
+.card.cc-warm .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.cc-warm .card-body .h3 {
+  margin-bottom: var(--sp-12);
+}
+
+/* Second row of cards spacing */
+.cc-card-row-2 {
+  margin-top: var(--sp-32);
+}
+
+
+/* === SECTION-SPECIFIC === */
+
+/* ---- HERO — Design C: Split Colour Block ---- */
+
+.section.cc-hero {
+  padding-top: var(--sp-64);
+  padding-bottom: var(--sp-64);
+  background-color: var(--marr-offwhite);
+}
+
+/* Blush panel — the key Design C differentiator */
+.hero-panel {
+  background-color: var(--marr-blush);
+  border-radius: var(--r-lg);
+  padding: var(--sp-48);
+}
+
+.hero-panel .eyebrow {
+  margin-bottom: var(--sp-16);
+}
+
+.cc-hero-eyebrow {
+  color: var(--marr-taupe);
+}
+
+.cc-hero-heading {
+  color: var(--marr-charcoal);
+  margin-bottom: var(--sp-20);
+}
+
+.cc-hero-text {
+  margin-bottom: var(--sp-32);
+}
+
+.hero-actions {
+  margin-top: var(--sp-8);
+}
+
+/* Hero image — rounded corners */
+.hero-image-wrap {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  height: 100%;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+}
+
+
+/* ---- SERVICES ---- */
+
+.section.cc-services {
+  background-color: var(--marr-offwhite);
+}
+
+
+/* ---- ABOUT — Design C: Text Left, Image Right ---- */
+
+.section.cc-about {
+  background-color: var(--marr-blush);
+}
+
+.about-text-wrap .eyebrow {
+  margin-bottom: var(--sp-12);
+}
+
+.about-text-wrap .h2 {
+  margin-bottom: var(--sp-20);
+}
+
+.about-text-wrap p {
+  margin-bottom: var(--sp-16);
+  color: var(--marr-text-muted);
+}
+
+.about-text-wrap p:last-of-type {
+  margin-bottom: var(--sp-32);
+}
+
+/* About image — rounded corners (Design C signature) */
+.about-image-wrap {
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r-lg);
+}
+
+/* About stat blocks — Design C: taupe background, white number */
+.about-stat.cc-taupe-block {
+  background-color: var(--marr-taupe);
+  border-radius: var(--r-lg);
+  padding: var(--sp-24) var(--sp-16);
+  text-align: center;
+}
+
+.about-stat__number {
+  display: block;
+  font-family: var(--marr-font-heading);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 300;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: var(--sp-4);
+}
+
+.about-stat__label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: var(--marr-tracking-body);
+}
+
+
+/* ---- TESTIMONIALS — Design C: Taupe Section, White Card ---- */
+
+.section.cc-testimonials {
+  background-color: var(--marr-taupe);
+}
+
+/* Centered testimonial card */
+.testimonial-card {
+  background-color: #ffffff;
+  border-radius: var(--r-lg);
+  padding: var(--sp-48);
+  box-shadow: var(--shadow-testimonial);
+  text-align: center;
+  position: relative;
+}
+
+/* Decorative opening quote mark */
+.testimonial-quote-mark {
+  font-family: var(--marr-font-heading);
+  font-size: 5rem;
+  line-height: 1;
+  color: var(--marr-taupe);
+  opacity: 0.4;
+  position: absolute;
+  top: var(--sp-16);
+  left: var(--sp-32);
+  pointer-events: none;
+}
+
+/* Testimonial body text */
+.testimonial-body {
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-body .paragraph-lg {
+  color: var(--marr-text);
+  margin-bottom: var(--sp-24);
+}
+
+/* Testimonial author */
+.testimonial-author {
+  padding-top: var(--sp-20);
+  border-top: 1px solid var(--marr-border);
+}
+
+.testimonial-author__name {
+  font-family: var(--marr-font-heading);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: var(--marr-charcoal);
+  margin-bottom: var(--sp-4);
+}
+
+.testimonial-author__detail {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--marr-text-muted);
+}
+
+/* Pagination dots — decorative */
+.testimonial-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-8);
+  margin-top: var(--sp-24);
+}
+
+.testimonial-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: background-color var(--transition-base);
+}
+
+.testimonial-dot.cc-active {
+  background-color: var(--marr-charcoal);
+}
+
+
+/* ---- CTA ---- */
+
+.section.cc-cta {
+  background-color: var(--marr-blush);
+}
+
+.section.cc-cta .section-header .paragraph-lg {
+  margin-bottom: var(--sp-32);
+}
+
+.cta-actions {
+  margin-top: var(--sp-8);
+}
+
+
+/* === FOOTER === */
+/* Design C: Charcoal bg, taupe accent links, taupe social, taupe divider */
+
+.section.cc-footer {
+  background-color: var(--marr-charcoal);
+  color: var(--marr-offwhite);
+  padding-bottom: var(--sp-32);
+}
+
+/* Footer brand wordmark */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--sp-16);
+  line-height: 1;
+}
+
+.footer-brand__main {
+  font-family: var(--marr-font-heading);
+  font-size: 1.75rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-offwhite);
+}
+
+.footer-brand__sub {
+  font-family: var(--marr-font-heading);
+  font-size: 0.5625rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+}
+
+/* Footer column headings — Design C: taupe colour */
+.footer-heading {
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+  margin-bottom: var(--sp-20);
+}
+
+/* Footer link list */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--sp-12);
+}
+
+/* Footer link — Design C: taupe on hover (not just white) */
+.footer-link {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(249, 249, 248, 0.7);
+  transition: color var(--transition-base);
+}
+
+.footer-link:hover {
+  color: var(--marr-taupe);
+}
+
+/* Footer contact (non-linked text) */
+.footer-contact {
+  font-size: 0.875rem;
+  font-weight: 300;
+  color: rgba(249, 249, 248, 0.7);
+}
+
+/* Footer muted paragraph */
+.cc-footer-muted {
+  color: rgba(249, 249, 248, 0.5);
+}
+
+/* Footer bottom bar — Design C: taupe divider line */
+.footer-bottom {
+  margin-top: var(--sp-48);
+  padding-top: var(--sp-24);
+  border-top: 1px solid var(--marr-taupe);
+}
+
+.cc-footer-fine {
+  font-size: 0.75rem;
+  color: rgba(249, 249, 248, 0.4);
+}
+
+/* Footer social links — Design C: taupe colour */
+.footer-social {
+  display: flex;
+  gap: var(--sp-20);
+}
+
+.footer-social__link {
+  font-family: var(--marr-font-heading);
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: var(--marr-tracking-heading);
+  text-transform: uppercase;
+  color: var(--marr-taupe);
+  transition: color var(--transition-base);
+}
+
+.footer-social__link:hover {
+  color: var(--marr-offwhite);
+}
+
+
+/* === UTILITIES === */
+
+/* Text alignment */
+.u-text-center { text-align: center; }
+.u-text-left   { text-align: left; }
+.u-text-right  { text-align: right; }
+
+/* Spacing utilities — margin */
+.u-mb-sm  { margin-bottom: var(--sp-12); }
+.u-mb-md  { margin-bottom: var(--sp-24); }
+.u-mb-lg  { margin-bottom: var(--sp-48); }
+.u-mt-sm  { margin-top: var(--sp-12); }
+.u-mt-md  { margin-top: var(--sp-24); }
+.u-mt-lg  { margin-top: var(--sp-48); }
+.u-mt-0   { margin-top: 0; }
+.u-mb-0   { margin-bottom: 0; }
+
+/* Display utilities */
+.u-d-none     { display: none; }
+.u-d-block    { display: block; }
+.u-d-flex     { display: flex; }
+.u-sm-d-none  { /* visible by default, hidden on mobile — handled in responsive */ }
+.u-sm-d-block { display: none; /* hidden by default, shown on mobile */ }
+
+/* Position and overflow */
+.u-position-relative { position: relative; }
+.u-overflow-hidden   { overflow: hidden; }
+
+/* Image cover utility */
+.u-img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Screen reader only */
+.u-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* === RESPONSIVE === */
+
+/* --- Tablet: max-width 991px --- */
+@media (max-width: 991px) {
+
+  /* Tablet column overrides */
+  .col-md-6  { width: 50%; }
+  .col-md-10 { width: 83.333333%; }
+  .col-md-12 { width: 100%; }
+
+  /* Reduce section spacing */
+  .section {
+    padding-top: var(--sp-64);
+    padding-bottom: var(--sp-64);
+  }
+
+  /* Hero stacks: text panel on top, image below */
+  .section.cc-hero .row {
+    flex-direction: column;
+  }
+
+  .section.cc-hero .col {
+    width: 100%;
+  }
+
+  .hero-image-wrap {
+    margin-top: var(--sp-32);
+  }
+
+  .hero-image-wrap img {
+    min-height: 300px;
+  }
+
+  /* Hero panel padding tighten */
+  .hero-panel {
+    padding: var(--sp-32);
+  }
+
+  /* About stacks: text on top, image below */
+  .section.cc-about .row {
+    flex-direction: column;
+  }
+
+  .section.cc-about .col {
+    width: 100%;
+  }
+
+  .about-image-wrap {
+    margin-top: var(--sp-32);
+  }
+
+  /* Footer columns stack at 2 across */
+  .section.cc-footer .col {
+    margin-bottom: var(--sp-32);
+  }
+}
+
+/* --- Mobile Landscape: max-width 767px --- */
+@media (max-width: 767px) {
+
+  /* Mobile landscape column overrides */
+  .col-sm-12 { width: 100%; }
+  .col-sm-6  { width: 50%; }
+
+  /* Hide desktop nav elements */
+  .u-sm-d-none {
+    display: none;
+  }
+
+  /* Show mobile toggle */
+  .u-sm-d-block {
+    display: block;
+  }
+
+  /* Nav layout — logo left, hamburger right on mobile */
+  .nav .row {
+    justify-content: space-between;
+  }
+
+  /* Reduce section spacing */
+  .section {
+    padding-top: var(--sp-48);
+    padding-bottom: var(--sp-48);
+  }
+
+  /* Container tighter padding */
+  .container {
+    padding-left: var(--sp-20);
+    padding-right: var(--sp-20);
+  }
+
+  /* Typography scaling */
+  .h1 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+  .h2 { font-size: clamp(1.375rem, 5vw, 1.875rem); }
+
+  /* Hero panel padding */
+  .hero-panel {
+    padding: var(--sp-32) var(--sp-24);
+  }
+
+  /* Card image height reduce */
+  .card-image-wrap img {
+    height: 180px;
+  }
+
+  /* Testimonial card padding */
+  .testimonial-card {
+    padding: var(--sp-32) var(--sp-24);
+  }
+
+  .testimonial-quote-mark {
+    font-size: 3.5rem;
+    top: var(--sp-8);
+    left: var(--sp-20);
+  }
+
+  /* Footer all columns full width */
+  .section.cc-footer .col {
+    width: 100%;
+  }
+
+  /* Footer bottom stacks */
+  .footer-bottom .row {
+    flex-direction: column;
+    gap: var(--sp-12);
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+}
+
+/* --- Mobile Portrait: max-width 477px --- */
+@media (max-width: 477px) {
+
+  /* Tightest section spacing */
+  .section {
+    padding-top: var(--sp-32);
+    padding-bottom: var(--sp-32);
+  }
+
+  /* Container minimal padding */
+  .container {
+    padding-left: var(--sp-16);
+    padding-right: var(--sp-16);
+  }
+
+  /* Typography — smallest scale */
+  .h1 { font-size: 1.625rem; }
+  .h2 { font-size: 1.25rem; }
+  .h3 { font-size: 1.0625rem; }
+
+  .paragraph-lg {
+    font-size: 1rem;
+  }
+
+  /* Hero panel tightest */
+  .hero-panel {
+    padding: var(--sp-24) var(--sp-20);
+  }
+
+  .hero-image-wrap img {
+    min-height: 240px;
+  }
+
+  /* Buttons stack full width on smallest screens */
+  .hero-actions .row-gap-sm,
+  .cta-actions .row-gap-sm {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .col-shrink,
+  .cta-actions .col-shrink {
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .cta-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* About stat blocks stack if needed */
+  .about-stat.cc-taupe-block {
+    padding: var(--sp-16) var(--sp-12);
+  }
+
+  /* Service card image shorter */
+  .card-image-wrap img {
+    height: 160px;
+  }
+
+  /* Second card row tighter */
+  .cc-card-row-2 {
+    margin-top: var(--sp-16);
+  }
+
+  /* Testimonial card */
+  .testimonial-card {
+    padding: var(--sp-24) var(--sp-20);
+  }
+
+  .testimonial-quote-mark {
+    font-size: 3rem;
+    top: var(--sp-4);
+    left: var(--sp-16);
+  }
+
+  /* Nav logo smaller */
+  .nav-logo__main {
+    font-size: 1.25rem;
+  }
+
+  .nav-logo__sub {
+    font-size: 0.5rem;
+  }
+
+  .nav-logo {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* --- Accessibility: Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
