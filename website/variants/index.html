@@ -580,7 +580,8 @@
     <form id="reviewForm" action="https://formsubmit.co/andrew@foxhue.com" method="POST" class="review-form">
       <input type="hidden" name="_cc" value="ashley@foxhue.com">
       <input type="hidden" name="_subject" value="MARR Layout Preferences — Client Feedback">
-      <input type="hidden" name="_next" value="https://ajeibbotson-cmyk.github.io/marr-laser/website/variants/thank-you.html">
+      <input type="hidden" name="_next" value="https://ajeibbotson-cmyk.github.io/marr-laser/website/variants/index.html">
+      <input type="hidden" name="_ajax" value="true">
       <input type="hidden" name="_captcha" value="false">
 
       <div class="review-cards">
@@ -1263,12 +1264,14 @@
         document.body.removeChild(ta);
       }
 
-      // Form submit
+      // Form submit (AJAX — stays on same page)
       document.getElementById('reviewForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var form = this;
         var msg = document.getElementById('formMessage');
+        var btn = document.getElementById('btnSubmit');
 
         if (!hasAnySelection()) {
-          e.preventDefault();
           msg.textContent = 'Please select a preferred layout for at least one page before submitting.';
           msg.className = 'form-message form-message--error';
           return;
@@ -1276,7 +1279,6 @@
 
         var name = document.getElementById('clientName').value.trim();
         if (!name) {
-          e.preventDefault();
           msg.textContent = 'Please enter your name.';
           msg.className = 'form-message form-message--error';
           document.getElementById('clientName').focus();
@@ -1284,8 +1286,30 @@
         }
 
         compileFormFields();
-        msg.textContent = 'Submitting...';
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
+        msg.textContent = '';
         msg.className = 'form-message';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (res.ok) {
+            msg.textContent = 'Thank you! Your preferences have been submitted successfully.';
+            msg.className = 'form-message form-message--success';
+            btn.textContent = 'Submitted';
+            try { localStorage.removeItem(STORAGE_KEY); } catch (ex) {}
+          } else {
+            throw new Error('Server error');
+          }
+        }).catch(function () {
+          msg.textContent = 'Something went wrong. Please try the "Copy to Clipboard" button instead and email your preferences.';
+          msg.className = 'form-message form-message--error';
+          btn.disabled = false;
+          btn.textContent = 'Submit Preferences';
+        });
       });
 
       // ── Init ──
