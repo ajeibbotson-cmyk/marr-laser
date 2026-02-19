@@ -26,6 +26,7 @@ marr-laser/
 │   ├── contact.html
 │   ├── style-guide.html      ← internal reference
 │   ├── styles.css
+│   ├── images/               ← local placeholder images (28 files, shared across site/designs/landing)
 │   └── variants/             ← Layout A/B/C alternatives for client review
 │       ├── index.html         ← client review hub (preference selectors + Formsubmit)
 │       ├── thank-you.html     ← form submission confirmation
@@ -99,13 +100,13 @@ Cangste is a custom font — Cormorant Garamond is the web fallback until webfon
 ## Subdirectory Details
 
 ### `website/`
-Full multi-page site styled with Design C (Warm Boutique). 10 pages covering all clinic services, plus a `variants/` directory containing Layout B and Layout C alternatives for each page (30 total variants). The client review hub at `variants/index.html` presents all 3 layouts per page with radio-button preference selectors, notes fields, and a Formsubmit.co submission form (sends to andrew@foxhue.com, CC ashley@foxhue.com). Submissions redirect to `thank-you.html`. JavaScript handles localStorage auto-save, live summary panel, and copy-to-clipboard fallback. CSS in `styles.css` uses Design C tokens throughout. All images use Unsplash hotlinks with `loading="lazy"` on below-fold images.
+Full multi-page site styled with Design C (Warm Boutique). 10 pages covering all clinic services, plus a `variants/` directory containing Layout B and Layout C alternatives for each page (30 total variants). The client review hub at `variants/index.html` presents all 3 layouts per page with radio-button preference selectors, notes fields, and a Formsubmit.co submission form (sends to andrew@foxhue.com, CC ashley@foxhue.com). Form submits via AJAX (Formsubmit.co) and displays inline confirmation without leaving the page. JavaScript handles localStorage auto-save, live summary panel, and copy-to-clipboard fallback. CSS in `styles.css` uses Design C tokens throughout. All images use local files from `website/images/` (28 curated placeholders) with `loading="lazy"` on below-fold images.
 
 ### `landing/`
-Single-page landing for laser hair removal — built as self-contained HTML/CSS blocks for Webflow custom code embeds. Each section in `sections/` has its own `<style>` block and can be pasted into Webflow independently. BEM naming with `marr-` prefix. Responsive breakpoints: 1200px, 991px, 767px, 478px.
+Single-page landing for laser hair removal — built as self-contained HTML/CSS blocks for Webflow custom code embeds. Each section in `sections/` has its own `<style>` block and can be pasted into Webflow independently. BEM naming with `marr-` prefix. Responsive breakpoints: 1200px, 991px, 767px, 478px. Images reference `../website/images/` (shared local files).
 
 ### `designs/`
-Three design directions deployed to GitHub Pages for client review. Hub page at `designs/index.html` links to all three.
+Three design directions deployed to GitHub Pages for client review. Hub page at `designs/index.html` links to all three. Design pages reference `../website/images/` for shared local image assets.
 
 | Direction | Name | Mood |
 |-----------|------|------|
@@ -126,5 +127,5 @@ Brand guidelines PDF, client briefs, SEO audit, development plan, and competitor
 - No JavaScript except the client review hub (`variants/index.html`) which uses inline JS for form handling and localStorage
 - Website breakpoints: 992px, 767px, 477px
 - Landing breakpoints: 1200px, 991px, 767px, 478px
-- Images via Unsplash hotlinks (`https://images.unsplash.com/photo-{ID}?auto=format&fit=crop&w={WIDTH}&q=80`)
+- Images served from `website/images/` (local files, shared by website, designs, and landing pages)
 - Google Fonts loaded via `<link>` in each HTML file
