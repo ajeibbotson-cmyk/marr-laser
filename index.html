@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MARR Laser & Skin Clinic — Project deliverables hub. Website, landing page, design directions, and documentation.">
   <title>MARR Laser &amp; Skin Clinic — Project Hub</title>
-
-  <!-- Google Fonts -->
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -19,8 +16,7 @@
       --marr-accent: #C6BCB3;
       --marr-accent-hover: #B4A89D;
       --marr-bg: #F9F9F8;
-      --marr-blush: #ECE5E0;
-      --marr-light: #ffffff;
+      --marr-surface: #FFFFFF;
       --marr-text: #3C3C3B;
       --marr-font-heading: 'Cormorant Garamond', serif;
       --marr-font-body: 'Noto Sans', sans-serif;
@@ -28,45 +24,49 @@
 
     body {
       font-family: var(--marr-font-body);
+      font-weight: 400;
       color: var(--marr-text);
       background: var(--marr-bg);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Header */
     .hub-header {
       text-align: center;
-      padding: 3rem 1.5rem 0;
+      padding: 56px 24px 0;
     }
 
     .hub-welcome {
-      font-family: var(--marr-font-heading);
-      font-size: 2.2rem;
-      font-weight: 400;
+      font-family: var(--marr-font-body);
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-weight: 600;
+      letter-spacing: 0.01em;
       color: var(--marr-primary);
-      margin-bottom: 1.5rem;
+      margin-bottom: 24px;
     }
 
     .hub-client-info {
       display: flex;
       justify-content: center;
       gap: 3rem;
-      padding: 1.25rem 0;
-      border-top: 1px solid var(--marr-blush);
-      border-bottom: 1px solid var(--marr-blush);
-      margin-bottom: 0;
+      padding: 20px 0;
+      border-top: 1px solid var(--marr-accent);
+      border-bottom: 1px solid var(--marr-accent);
     }
 
     .hub-client-info__item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.25rem;
+      gap: 4px;
     }
 
     .hub-client-info__label {
-      font-size: 0.65rem;
+      font-size: 0.6875rem;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -82,108 +82,84 @@
 
     /* Main */
     .hub-main {
-      max-width: 900px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+      padding: 48px 24px 64px;
+      flex: 1;
     }
 
-    /* Sections */
-    .hub-section {
-      margin-bottom: 2.5rem;
-    }
-
-    .hub-section__title {
-      font-family: var(--marr-font-heading);
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: var(--marr-primary);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--marr-accent);
-    }
-
-    .hub-section__desc {
-      font-size: 0.85rem;
-      color: #6b6b6a;
-      margin-bottom: 1rem;
-    }
-
-    /* Link cards */
+    /* Link Cards */
     .hub-links {
       display: grid;
-      gap: 0.75rem;
-    }
-
-    .hub-links--grid {
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
     .hub-link {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--marr-light);
-      border: 1px solid var(--marr-blush);
-      border-radius: 6px;
-      padding: 1rem 1.25rem;
+      flex-direction: column;
+      background: var(--marr-surface);
+      border-radius: 10px;
+      padding: 28px 24px;
       text-decoration: none;
       color: var(--marr-text);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(60,60,59,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .hub-link:hover {
-      border-color: var(--marr-accent-hover);
-      box-shadow: 0 2px 8px rgba(60, 60, 59, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(60,60,59,0.1);
     }
 
-    .hub-link__info {
-      flex: 1;
+    .hub-link:focus-visible {
+      outline: 2px solid var(--marr-accent-hover);
+      outline-offset: 2px;
     }
 
-    .hub-link__name {
-      font-family: var(--marr-font-heading);
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: var(--marr-primary);
-      margin-bottom: 0.2rem;
-    }
-
-    .hub-link__desc {
-      font-size: 0.78rem;
-      color: #8a8a89;
-    }
-
-    .hub-link__arrow {
-      font-size: 1.1rem;
-      color: var(--marr-accent-hover);
-      margin-left: 1rem;
-      flex-shrink: 0;
-      transition: transform 0.2s;
-    }
-
-    .hub-link:hover .hub-link__arrow {
-      transform: translateX(3px);
-    }
-
-    /* Tag */
-    .hub-link__tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 500;
+    .hub-link__number {
+      font-size: 0.6875rem;
+      font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--marr-accent-hover);
-      background: var(--marr-blush);
-      padding: 0.15rem 0.5rem;
-      border-radius: 3px;
-      margin-bottom: 0.3rem;
+      margin-bottom: 8px;
+    }
+
+    .hub-link__title {
+      font-family: var(--marr-font-heading);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--marr-primary);
+      margin-bottom: 6px;
+    }
+
+    .hub-link__desc {
+      font-size: 0.8125rem;
+      color: #8a8a89;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .hub-link__arrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--marr-accent-hover);
+      margin-top: 16px;
+      transition: letter-spacing 0.2s ease;
+    }
+
+    .hub-link:hover .hub-link__arrow {
+      letter-spacing: 0.14em;
     }
 
     /* Footer */
     .hub-footer {
       text-align: center;
-      padding: 2rem 1.5rem;
-      border-top: 1px solid var(--marr-blush);
+      padding: 24px;
+      border-top: 1px solid var(--marr-accent);
     }
 
     .hub-footer__text {
@@ -191,10 +167,15 @@
       color: #8a8a89;
     }
 
-    @media (max-width: 600px) {
-      .hub-welcome { font-size: 1.7rem; }
-      .hub-client-info { flex-direction: column; gap: 1rem; }
-      .hub-links--grid { grid-template-columns: 1fr; }
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hub-links {
+        grid-template-columns: 1fr;
+      }
+      .hub-client-info {
+        flex-direction: column;
+        gap: 16px;
+      }
     }
   </style>
 </head>
@@ -220,159 +201,48 @@
 
   <main class="hub-main">
 
-    <!-- Design Directions -->
-    <section class="hub-section">
-      <h2 class="hub-section__title">Design Directions</h2>
-      <p class="hub-section__desc">Three distinct design concepts for client review.</p>
-      <div class="hub-links hub-links--grid">
-        <a href="designs/" class="hub-link">
-          <div class="hub-link__info">
-            <span class="hub-link__tag">Hub</span>
-            <div class="hub-link__name">All Three Designs</div>
-            <div class="hub-link__desc">Overview of all design directions</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="designs/design-a/" class="hub-link">
-          <div class="hub-link__info">
-            <span class="hub-link__tag">Direction A</span>
-            <div class="hub-link__name">Serene Spa</div>
-            <div class="hub-link__desc">Calm clinical authority</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="designs/design-b/" class="hub-link">
-          <div class="hub-link__info">
-            <span class="hub-link__tag">Direction B</span>
-            <div class="hub-link__name">Editorial Bold</div>
-            <div class="hub-link__desc">Fashion editorial, high contrast</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="designs/design-c/" class="hub-link">
-          <div class="hub-link__info">
-            <span class="hub-link__tag">Direction C</span>
-            <div class="hub-link__name">Warm Boutique</div>
-            <div class="hub-link__desc">Welcoming, soft, approachable</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-    </section>
+    <nav class="hub-links" aria-label="Project deliverables">
 
-    <!-- Landing Page -->
-    <section class="hub-section">
-      <h2 class="hub-section__title">Landing Page</h2>
-      <p class="hub-section__desc">Laser hair removal offer page — built as Webflow-ready embed blocks.</p>
-      <div class="hub-links">
-        <a href="landing/" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Laser Hair Removal Landing Page</div>
-            <div class="hub-link__desc">Full single-page offer with pricing, FAQs, and booking CTAs</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-    </section>
+      <a href="docs/creative-process.html" class="hub-link">
+        <span class="hub-link__number">01</span>
+        <h2 class="hub-link__title">Creative Process</h2>
+        <p class="hub-link__desc">How we got here &mdash; the research, inspiration, and thinking behind your design directions.</p>
+        <span class="hub-link__arrow" aria-hidden="true">View Process &rarr;</span>
+      </a>
 
-    <!-- Website -->
-    <section class="hub-section">
-      <h2 class="hub-section__title">Website</h2>
-      <p class="hub-section__desc">Full multi-page clinic website — Design C (Warm Boutique) styling.</p>
-      <div class="hub-links hub-links--grid">
-        <a href="website/" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Homepage</div>
-            <div class="hub-link__desc">Hero, services, testimonials</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/laser-hair-removal.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Laser Hair Removal</div>
-            <div class="hub-link__desc">Flagship service page</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/why-alexandrite.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Why Alexandrite</div>
-            <div class="hub-link__desc">Technical USP landing page</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/skin-treatments.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Skin Treatments</div>
-            <div class="hub-link__desc">IPL, CO2, thread veins, pigmentation</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/anti-ageing.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Anti-Ageing</div>
-            <div class="hub-link__desc">Focus Dual, CACI, rejuvenation</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/aesthetics.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Aesthetics</div>
-            <div class="hub-link__desc">Botox, fillers, Profhilo</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/about.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">About / Team</div>
-            <div class="hub-link__desc">Clinic story, values, team profiles</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/gallery.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Gallery</div>
-            <div class="hub-link__desc">Before/after results</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/blog.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Blog</div>
-            <div class="hub-link__desc">SEO content hub</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a href="website/contact.html" class="hub-link">
-          <div class="hub-link__info">
-            <div class="hub-link__name">Contact</div>
-            <div class="hub-link__desc">Location, map, booking</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-    </section>
+      <a href="designs/" class="hub-link">
+        <span class="hub-link__number">02</span>
+        <h2 class="hub-link__title">Design Directions</h2>
+        <p class="hub-link__desc">Three distinct visual approaches for your clinic: Serene Spa, Editorial Bold, and Warm Boutique.</p>
+        <span class="hub-link__arrow" aria-hidden="true">View Designs &rarr;</span>
+      </a>
 
-    <!-- Layout Variants -->
-    <section class="hub-section">
-      <h2 class="hub-section__title">Layout Variants</h2>
-      <p class="hub-section__desc">Each page has three layout options (A, B &amp; C) — select preferences and submit feedback.</p>
-      <div class="hub-links">
-        <a href="website/variants/" class="hub-link">
-          <div class="hub-link__info">
-            <span class="hub-link__tag">Client Review</span>
-            <div class="hub-link__name">Compare All Variants</div>
-            <div class="hub-link__desc">Layout A vs B vs C for every page — with preference selectors and feedback form</div>
-          </div>
-          <span class="hub-link__arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-    </section>
+      <a href="website/variants/" class="hub-link">
+        <span class="hub-link__number">03</span>
+        <h2 class="hub-link__title">Layout Review</h2>
+        <p class="hub-link__desc">Compare all three layouts across every page, pick your preferences, and leave notes.</p>
+        <span class="hub-link__arrow" aria-hidden="true">Review Layouts &rarr;</span>
+      </a>
 
+      <a href="docs/seo-competitor-report.html" class="hub-link">
+        <span class="hub-link__number">04</span>
+        <h2 class="hub-link__title">SEO Competitor Report</h2>
+        <p class="hub-link__desc">In-depth competitor analysis, keyword opportunities, and SEO recommendations.</p>
+        <span class="hub-link__arrow" aria-hidden="true">View Report &rarr;</span>
+      </a>
+
+      <a href="landing/" class="hub-link">
+        <span class="hub-link__number">05</span>
+        <h2 class="hub-link__title">Landing Page</h2>
+        <p class="hub-link__desc">Laser hair removal campaign landing page for Meta advertising &mdash; standalone offer with pricing and booking.</p>
+        <span class="hub-link__arrow" aria-hidden="true">View Landing Page &rarr;</span>
+      </a>
+
+    </nav>
   </main>
 
   <footer class="hub-footer">
-    <p class="hub-footer__text">&copy; 2026 MARR Laser &amp; Skin Clinic. Project deliverables &mdash; not for public distribution.</p>
+    <p class="hub-footer__text">Prepared by Foxhue Ltd</p>
   </footer>
 
 </body>
