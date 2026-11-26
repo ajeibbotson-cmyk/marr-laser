@@ -95,3 +95,15 @@ Brand guidelines PDF, client briefs, SEO audit, development plan, and competitor
 - Landing breakpoints: 1200px, 991px, 767px, 478px
 - Placeholder images via `https://placehold.co/`
 - Google Fonts loaded via `<link>` in each HTML file
+
+## Current Status / Next Steps
+
+**Client chose Design C — Warm Boutique** (welcoming, soft corners, approachable).
+
+### Next task
+Build **3 full-site layout variations** using Design C's visual language. Output to Figma.
+
+### Session checklist
+1. Verify Figma MCP server is connected — run `/mcp` on session start
+2. Reference Design C source at `designs/design-c/`
+3. Carry forward brand tokens and typography from this file
